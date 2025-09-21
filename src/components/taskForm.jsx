@@ -9,6 +9,7 @@ export function TaskForm({ projectId, onAdd, onCancel }) {
   const createdAtRef = useRef();
   const dueDateRef = useRef();
   const today = new Date().toISOString().split("T")[0];
+  const updated_at = "";
 
   function handleAddTask() {
     let title = titleRef.current.value;
@@ -32,6 +33,7 @@ export function TaskForm({ projectId, onAdd, onCancel }) {
       status,
       created_at: today,
       dueDate,
+      updated_at
     });
     titleRef.current.value = "";
     descriptionRef.current.value = "";

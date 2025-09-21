@@ -89,6 +89,15 @@ const taskFormCancel = () => {
     })
   }
 
+  const editTask = (updatedTask) => {
+    setProjectState((prevState) => {
+      return {
+        ...prevState,
+        tasks: projectState.tasks.map((task) => task.task_id != updatedTask.task_id ? task : updatedTask)
+      }
+    })
+  }
+
   // when the page reloads
   if (projectState.selectedProjectid === undefined) content = <NoProject />;
 
@@ -108,7 +117,7 @@ const taskFormCancel = () => {
     if (projectState.showTaskform == true) {
       content = <TaskForm projectId={selectedProject.project_id} onAdd={saveTask} onCancel={taskFormCancel}></TaskForm>;
     } else {
-      content = <ShowCard project={selectedProject} tasks={taskofSelectedProject} onAdd={addTaskBtn} deleteTask={removeTask}></ShowCard>;
+      content = <ShowCard project={selectedProject} tasks={taskofSelectedProject} onAdd={addTaskBtn} deleteTask={removeTask} updateTask={editTask}></ShowCard>;
     }
   }
 
