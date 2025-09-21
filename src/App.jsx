@@ -2,6 +2,7 @@ import { useState } from "react";
 import { NoProject } from "./components/NoProject.jsx";
 import { Sidebar } from "./components/Sidebar.jsx";
 import { ProjectForm } from "./components/projectForm.jsx";
+import { TaskForm } from "./components/taskForm.jsx";
 import { ShowCard } from "./components/showTaskCard.jsx";
 
 export function App() {
@@ -51,6 +52,35 @@ export function App() {
     });
   };
 
+  const addTaskBtn = () => {
+    setProjectState((prevState) => {
+      return {
+        ...prevState,
+        showTaskform: true
+      };
+    });
+  };
+
+const taskFormCancel = () => {
+    setProjectState((prevState) => {
+      return {
+        ...prevState,
+        showTaskform: false 
+      };
+    });
+  };
+
+  const saveTask = (task) => {
+    setProjectState((prevState) => {
+      return {
+        ...prevState,
+        tasks: [...prevState.tasks, task],
+        showTaskform: false
+      };
+    });
+  };
+
+
   // when the page reloads
   if (projectState.selectedProjectid === undefined) content = <NoProject />;
 
@@ -70,7 +100,7 @@ export function App() {
     if (projectState.showTaskform == true) {
       content = <TaskForm projectId={selectedProject.project_id} onAdd={saveTask} onCancel={taskFormCancel}></TaskForm>;
     } else {
-      content = <ShowCard project={selectedProject} tasks={taskofSelectedProject}></ShowCard>;
+      content = <ShowCard project={selectedProject} tasks={taskofSelectedProject} onAdd={addTaskBtn}></ShowCard>;
     }
   }
 

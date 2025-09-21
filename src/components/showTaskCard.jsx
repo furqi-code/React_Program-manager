@@ -1,6 +1,6 @@
 import { TaskCard } from "./taskCard";
 
-export function ShowCard({ tasks, onAdd, project, deleteTask, updateTask }) {
+export function ShowCard({ tasks, onAdd, project }) {
   return (
     <>
       <div className="w-full mx-auto">
@@ -24,7 +24,7 @@ export function ShowCard({ tasks, onAdd, project, deleteTask, updateTask }) {
           <div>
             {/* you can add Searchbar here if you want */}
             {tasks.length > 0 ? (
-              tasks.map((task) => <TaskCard key={task.id} {...task} project_id={project.project_id} deleteTask={deleteTask} updateTask={updateTask}/>)
+              tasks.map((task) => <TaskCard key={task.id} {...task} project_id={project.project_id}/>)
             ) : (
               <h3>Zero task added to this Project</h3>
             )}

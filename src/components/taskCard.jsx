@@ -9,8 +9,6 @@ export function TaskCard({
   status,
   dueDate,
   created_at,
-  deleteTask,
-  updateTask
 }) {
   const [isEditing, setisEditing] = useState(false);
   const [isUpdated, setisUpdated] = useState(false);
@@ -86,7 +84,7 @@ export function TaskCard({
               <button
                 type="button"
                 className="canvaBtn btn-delete bg-red-600 hover:bg-red-700 text-white font-semibold py-1 px-4 rounded"
-                onClick={() => deleteTask(task_id)}
+                // onClick={() => deleteTask(task_id)}
               >
                 Delete
               </button>
@@ -104,22 +102,22 @@ export function TaskCard({
               <button
                 type="button"
                 className="canvaBtn btn-save bg-green-600 hover:bg-green-700 text-white font-semibold py-1 px-4 rounded"
-                onClick={() => {
-                  const title = titleRef.current.value;
-                  const description = descriptionRef.current.value;
-                  updateTask({
-                    task_id,
-                    project_id,
-                    title,
-                    description,
-                    status: "just now",
-                    created_at,
-                    dueDate,
-                    updated_at: new Date().toISOString().split("T")[0],
-                  });
-                  setisEditing(false);
-                  setisUpdated(true);
-                }}
+                // onClick={() => {
+                //   const title = titleRef.current.value;
+                //   const description = descriptionRef.current.value;
+                //   updateTask({
+                //     task_id,
+                //     project_id,
+                //     title,
+                //     description,
+                //     status: "just now",
+                //     created_at,
+                //     dueDate,
+                //     updated_at: new Date().toISOString().split("T")[0],
+                //   });
+                //   setisEditing(false);
+                //   setisUpdated(true);
+                // }}
               >
                 💾 Save
               </button>
