@@ -108,18 +108,10 @@ const taskFormCancel = () => {
 
   // when you click to open any project
   if (projectState.selectedProjectid) {
-    const selectedProject = projectState.projects.find(
-      (project) => project.project_id === projectState.selectedProjectid
-    );
-    const taskofSelectedProject = projectState.tasks.filter(
-      (task) => task.project_id === projectState.selectedProjectid
-    );
-    console.log("tasks of this project \n", taskofSelectedProject);
-    if (projectState.showTaskform == true) {
+    if (projectState.showTaskform == true) 
       content = <TaskForm/>;
-    } else {
-      content = <ShowCard project={selectedProject} tasks={taskofSelectedProject}></ShowCard>;
-    }
+    else 
+      content = <ShowCard />;
   }
 
   return (
