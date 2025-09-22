@@ -9,5 +9,8 @@ export const ProjectContext = createContext({
     cancelProjectBtn: ()=> {},
     addProjectBtn: ()=> {},
     cancelTaskBtn: ()=> {},
-    saveTaskBtn: ()=> {}
+    saveTask: ()=> {},
+    addTaskBtn: ()=> {},
+    deleteTask: ()=> {},
+    updateTask: ()=> {}
 }) 

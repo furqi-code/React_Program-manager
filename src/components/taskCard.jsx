@@ -1,18 +1,17 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useContext } from "react";
 import { Input } from "./Input";
+import { ProjectContext } from "../store/projectContext";
 
 export function TaskCard({
   task_id,
-  project_id,
   title,
   description,
   status,
   dueDate,
   created_at,
   updated_at, 
-  deleteTask,
-  updateTask
 }) {
+  const {selectedProjectid, deleteTask, updateTask} = useContext(ProjectContext) ;
   const [isEditing, setisEditing] = useState(false);
   const [isUpdated, setisUpdated] = useState(false);
   const titleRef = useRef();
@@ -110,7 +109,7 @@ export function TaskCard({
                   const description = descriptionRef.current.value;
                   updateTask({
                     task_id,
-                    project_id,
+                    project_id: selectedProjectid,
                     title,
                     description,
                     status: "just now",

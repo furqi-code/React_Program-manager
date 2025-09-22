@@ -3,7 +3,7 @@ import { ProjectContext } from "../store/projectContext";
 import { Input } from "./Input";
 
 export function TaskForm() {
-  const {selectedProjectid, cancelTaskBtn, saveTaskBtn} = useContext(ProjectContext) ;
+  const {selectedProjectid, cancelTaskBtn, saveTask} = useContext(ProjectContext) ;
   const titleRef = useRef();
   const descriptionRef = useRef();
   const statusRef = useRef();
@@ -24,7 +24,7 @@ export function TaskForm() {
       alert("Please fill in all the input fields");
       return;
     }
-    saveTaskBtn({
+    saveTask({
       task_id: Math.round(Math.random() * 21),
       project_id: selectedProjectid,
       title,

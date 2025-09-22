@@ -118,7 +118,7 @@ const taskFormCancel = () => {
     if (projectState.showTaskform == true) {
       content = <TaskForm/>;
     } else {
-      content = <ShowCard project={selectedProject} tasks={taskofSelectedProject} onAdd={addTaskBtn} deleteTask={removeTask} updateTask={editTask}></ShowCard>;
+      content = <ShowCard project={selectedProject} tasks={taskofSelectedProject}></ShowCard>;
     }
   }
 
@@ -132,7 +132,10 @@ const taskFormCancel = () => {
       cancelProjectBtn: projectFormCancel,
       addProjectBtn: addProject,
       cancelTaskBtn: taskFormCancel,
-      saveTaskBtn: saveTask
+      saveTask: saveTask,
+      addTaskBtn: addTaskBtn,
+      deleteTask: removeTask,
+      updateTask: editTask
     }}>
       <Sidebar></Sidebar>
       {content}
