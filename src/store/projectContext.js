@@ -5,5 +5,7 @@ export const ProjectContext = createContext({
     tasks: [],
     selectedProjectid: undefined,
     onAdditionProject: ()=> {},
-    onProjectSelect: ()=> {}
+    onProjectSelect: ()=> {},
+    cancelProjectBtn: ()=> {},
+    addProjectBtn: ()=> {}
 }) 

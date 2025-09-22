@@ -104,7 +104,7 @@ const taskFormCancel = () => {
 
   // when you click on createProject btn
   if (projectState.selectedProjectid === null)
-    content = <ProjectForm onCancel={projectFormCancel} onAdd={addProject} />;
+    content = <ProjectForm/>;
 
   // when you click to open any project
   if (projectState.selectedProjectid) {
@@ -128,7 +128,9 @@ const taskFormCancel = () => {
       tasks: projectState.tasks,
       selectedProjectid: projectState.selectedProjectid,
       onAdditionProject: createProjectBtn,
-      onProjectSelect: onProjectSelect
+      onProjectSelect: onProjectSelect,
+      cancelProjectBtn: projectFormCancel,
+      addProjectBtn: addProject
     }}>
       <Sidebar
         

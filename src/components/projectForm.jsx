@@ -1,7 +1,9 @@
-import { useRef } from "react";
+import { useContext, useRef } from "react";
 import { Input } from "./Input";
+import { ProjectContext } from "../store/projectContext";
 
-export function ProjectForm({ onCancel, onAdd }) {
+export function ProjectForm() {
+  const {cancelProjectBtn, addProjectBtn} = useContext(ProjectContext) ;
   const titleRef = useRef();
   const descRef = useRef();
   return (
@@ -61,7 +63,7 @@ export function ProjectForm({ onCancel, onAdd }) {
                     alert("Please fill in all the input fields");
                     return;
                   }
-                  onAdd({
+                  addProjectBtn({
                     project_id: Math.round(Math.random() * 21),
                     title,
                     description,
@@ -75,7 +77,7 @@ export function ProjectForm({ onCancel, onAdd }) {
               <button
                 class="shadow bg-red-800 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
                 type="button"
-                onClick={onCancel}
+                onClick={cancelProjectBtn}
               >
                 Cancel
               </button>
