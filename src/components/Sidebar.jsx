@@ -1,4 +1,8 @@
-export function Sidebar({ projects, onAdd, onSelect }) {
+import { useContext } from "react";
+import { ProjectContext } from "../store/projectContext";
+
+export function Sidebar() {
+  const {projects, onAdditionProject, onProjectSelect} = useContext(ProjectContext) ;
   return (
     <>
       <aside
@@ -18,7 +22,7 @@ export function Sidebar({ projects, onAdd, onSelect }) {
             </span>
           </a>
           <ul class="space-y-2 font-medium">
-            <li onClick={onAdd}>
+            <li onClick={onAdditionProject}>
               <a
                 href="#"
                 class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
@@ -45,7 +49,7 @@ export function Sidebar({ projects, onAdd, onSelect }) {
               return (
                 <li
                   onClick={() => {
-                    onSelect(project.project_id);
+                    onProjectSelect(project.project_id);
                   }}
                 >
                   <a

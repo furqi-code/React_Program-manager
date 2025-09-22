@@ -4,6 +4,7 @@ import { Sidebar } from "./components/Sidebar.jsx";
 import { ProjectForm } from "./components/projectForm.jsx";
 import { TaskForm } from "./components/taskForm.jsx";
 import { ShowCard } from "./components/showTaskCard.jsx";
+import { ProjectContext } from "./store/projectContext.js";	
 
 export function App() {
   const [projectState, setProjectState] = useState({
@@ -122,13 +123,17 @@ const taskFormCancel = () => {
   }
 
   return (
-    <>
+    <ProjectContext value={{
+      projects: projectState.projects,
+      tasks: projectState.tasks,
+      selectedProjectid: projectState.selectedProjectid,
+      onAdditionProject: createProjectBtn,
+      onProjectSelect: onProjectSelect
+    }}>
       <Sidebar
-        onAdd={createProjectBtn}
-        onSelect={onProjectSelect}
-        projects={projectState.projects}
-      ></Sidebar>
+        
+        ></Sidebar>
       {content}
-    </>
+      </ProjectContext>
   );
 }
