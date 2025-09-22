@@ -116,7 +116,7 @@ const taskFormCancel = () => {
     );
     console.log("tasks of this project \n", taskofSelectedProject);
     if (projectState.showTaskform == true) {
-      content = <TaskForm projectId={selectedProject.project_id} onAdd={saveTask} onCancel={taskFormCancel}></TaskForm>;
+      content = <TaskForm/>;
     } else {
       content = <ShowCard project={selectedProject} tasks={taskofSelectedProject} onAdd={addTaskBtn} deleteTask={removeTask} updateTask={editTask}></ShowCard>;
     }
@@ -130,11 +130,11 @@ const taskFormCancel = () => {
       onAdditionProject: createProjectBtn,
       onProjectSelect: onProjectSelect,
       cancelProjectBtn: projectFormCancel,
-      addProjectBtn: addProject
+      addProjectBtn: addProject,
+      cancelTaskBtn: taskFormCancel,
+      saveTaskBtn: saveTask
     }}>
-      <Sidebar
-        
-        ></Sidebar>
+      <Sidebar></Sidebar>
       {content}
       </ProjectContext>
   );

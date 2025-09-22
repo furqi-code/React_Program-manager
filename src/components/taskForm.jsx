@@ -1,12 +1,12 @@
-import { useRef } from "react";
+import { useRef, useContext } from "react";
+import { ProjectContext } from "../store/projectContext";
 import { Input } from "./Input";
-import { TaskCard } from "./taskCard";
 
-export function TaskForm({ projectId, onAdd, onCancel }) {
+export function TaskForm() {
+  const {selectedProjectid, cancelTaskBtn, saveTaskBtn} = useContext(ProjectContext) ;
   const titleRef = useRef();
   const descriptionRef = useRef();
   const statusRef = useRef();
-  const createdAtRef = useRef();
   const dueDateRef = useRef();
   const today = new Date().toISOString().split("T")[0];
   const updated_at = "";
@@ -15,7 +15,6 @@ export function TaskForm({ projectId, onAdd, onCancel }) {
     let title = titleRef.current.value;
     let description = descriptionRef.current.value;
     let status = statusRef.current.value;
-    // let created_at = createdAtRef.current.value;
     let dueDate = dueDateRef.current.value;
     if (
       !title.trim() ||
@@ -25,9 +24,9 @@ export function TaskForm({ projectId, onAdd, onCancel }) {
       alert("Please fill in all the input fields");
       return;
     }
-    onAdd({
+    saveTaskBtn({
       task_id: Math.round(Math.random() * 21),
-      project_id: projectId,
+      project_id: selectedProjectid,
       title,
       description,
       status,
@@ -100,20 +99,6 @@ export function TaskForm({ projectId, onAdd, onCancel }) {
             type="date"
             // defaultValue={today}
           />
-          {/* <label
-            class="block text-gray-500 font-bold md:text-center mb-1 md:mb-0 pr-4"
-            for="TaskCreatedAt"
-          >
-            Created_at
-          </label>
-          <Input
-            className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
-            id="TaskCreatedAt"
-            ref={createdAtRef}
-            placeholder="Created at"
-            type="date"
-            defaultValue={today}
-          /> */}
           <button
             class="shadow bg-gray-800 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 mx-2 rounded"
             type="button"
@@ -124,7 +109,7 @@ export function TaskForm({ projectId, onAdd, onCancel }) {
           <button
             class="shadow bg-gray-800 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 mx-2 rounded"
             type="button"
-            onClick={onCancel}
+            onClick={cancelTaskBtn}
           >
             Cancel
           </button>
